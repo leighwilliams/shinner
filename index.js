@@ -71,7 +71,7 @@ function convertToHtml(input) {
   var options = {}
   options.minify = true;
   options.customCss = false;
-  options.inline = true;
+  options.inline = false;
   console.log('[INFO] convertToHtml : %s', input.sourceFile)
   shins.render(input.markdown, options, (err, html) => {
     if (err) {
