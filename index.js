@@ -14,7 +14,7 @@ program
   .action(function(source, target, include, debug) {
     sourceFile = path.resolve(source)
     targetPath = path.resolve(target)
-    includeFile = '/Users/javier/shinner/examples/api_2.yaml'
+    includeFile = ''
   })
   .parse(process.argv)
 
@@ -69,9 +69,9 @@ function writeTargetFile(input) {
 
 function convertToHtml(input) {
   var options = {}
-  options.minify = false;
+  options.minify = true;
   options.customCss = false;
-  options.inline = false;
+  options.inline = true;
   console.log('[INFO] convertToHtml : %s', input.sourceFile)
   shins.render(input.markdown, options, (err, html) => {
     if (err) {
@@ -84,12 +84,3 @@ function convertToHtml(input) {
 }
 
 convertToMarkDown( readSourceFile(sourceFile) )
-
-// recursive(sourceFile, [(f,s) => !s.isDirectory() && path.extname(f) != ".yaml"])
-//   .then(
-//     files => files
-//         .map(readSourceFile)
-//         .map(convertToMarkDown)
-//     ,
-//     error => console.error("something exploded", error)
-//   )
